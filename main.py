@@ -48,26 +48,13 @@ def main():
         for det in detections:
             if 'subobject' in det:
                 sub_object = det['subobject']
-                image_path = retrieve_sub_object(frame, det, sub_object, Config.OUTPUT_PATH)
+                image_path = retrieve_sub_object(frame, det, sub_object, "output")
                 sub_object['image_path'] = image_path
-
-        # Display the results (optional for demo purposes)
-        for det in detections:
-            cv2.rectangle(frame, (det['bbox'][0], det['bbox'][1]), (det['bbox'][2], det['bbox'][3]), (0, 255, 0), 2)
-            cv2.putText(frame, f"{det['object']} {det['id']}", (det['bbox'][0], det['bbox'][1] - 10),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-
-        cv2.putText(frame, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-        cv2.imshow('Indian Object Detection', frame)
-
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
 
     end_time = cv2.getTickCount()
     total_time = (end_time - start_time) / cv2.getTickFrequency()
 
     video.release()
-    cv2.destroyAllWindows()
 
     # Generate metadata
     metadata = generate_metadata(frame_count, total_time, min_fps, max_fps)
@@ -79,11 +66,10 @@ def main():
     }
 
     # Save JSON output
-    with open(f"{Config.OUTPUT_PATH}/indian_object_detection_output.json", 'w') as f:
+    with open("output/object_detection_output.json", 'w') as f:
         json.dump(output, f, indent=2)
 
-    print(f"JSON output saved to '{Config.OUTPUT_PATH}/indian_object_detection_output.json'")
+    print(f"JSON output saved to 'output/object_detection_output.json'")
 
 if __name__ == "__main__":
     main()
-
