@@ -4,8 +4,8 @@ import psutil
 def format_detections(detections, frame_id):
     formatted = {
         "frame_id": frame_id,
-        "timestamp": (datetime.now() + timedelta(seconds=frame_id/30)).isoformat(),  # Assuming 30 FPS
-        "location": "Mumbai, Maharashtra, India",  # This should be dynamically determined in a real system
+        "timestamp": (datetime.now() + timedelta(seconds=frame_id/30)).isoformat(),  
+        "location": "Mumbai, Maharashtra, India", 
         "detections": []
     }
 
