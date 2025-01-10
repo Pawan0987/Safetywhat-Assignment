@@ -1,0 +1,111 @@
+{
+  "frame_detections": [
+    {
+      "frame_id": 1,
+      "timestamp": "2024-01-10T14:23:15.123Z",
+      "location": "Mumbai, Maharashtra, India",
+      "detections": [
+        {
+          "object": "person",
+          "id": 1,
+          "bbox": [120, 50, 320, 450],
+          "confidence": 0.92,
+          "subobject": {
+            "object": "helmet",
+            "id": 1,
+            "bbox": [150, 50, 220, 120],
+            "confidence": 0.88,
+            "image_path": "output/person_1_helmet_1.jpg"
+          }
+        },
+        {
+          "object": "auto-rickshaw",
+          "id": 1,
+          "bbox": [450, 200, 850, 600],
+          "confidence": 0.95,
+          "subobject": {
+            "object": "license_plate",
+            "id": 1,
+            "bbox": [480, 500, 560, 580],
+            "confidence": 0.89,
+            "image_path": "output/auto-rickshaw_1_license_plate_1.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "frame_id": 2,
+      "timestamp": "2024-01-10T14:23:15.173Z",
+      "location": "Delhi, India",
+      "detections": [
+        {
+          "object": "motorcycle",
+          "id": 1,
+          "bbox": [125, 55, 325, 455],
+          "confidence": 0.91,
+          "subobject": {
+            "object": "license_plate",
+            "id": 1,
+            "bbox": [155, 55, 225, 125],
+            "confidence": 0.87,
+            "image_path": "output/motorcycle_1_license_plate_1.jpg"
+          }
+        },
+        {
+          "object": "car",
+          "id": 1,
+          "bbox": [10, 100, 410, 500],
+          "confidence": 0.93,
+          "subobject": {
+            "object": "tire",
+            "id": 1,
+            "bbox": [180, 450, 280, 480],
+            "confidence": 0.85,
+            "image_path": "output/car_1_tire_1.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "processing_info": {
+      "model_name": "YOLOv5s-Indian",
+      "model_version": "1.0.0",
+      "inference_device": "CPU",
+      "average_fps": 24.5,
+      "total_frames_processed": 2,
+      "detection_threshold": 0.5,
+      "processing_resolution": [1920, 1080]
+    },
+    "object_classes": {
+      "main_objects": ["person", "car", "motorcycle", "auto-rickshaw"],
+      "sub_objects": ["helmet", "tire", "license_plate"],
+      "supported_pairs": [
+        {"main": "person", "sub": "helmet"},
+        {"main": "car", "sub": "tire"},
+        {"main": "car", "sub": "license_plate"},
+        {"main": "motorcycle", "sub": "license_plate"},
+        {"main": "auto-rickshaw", "sub": "license_plate"}
+      ]
+    },
+    "performance_metrics": {
+      "average_inference_time": 0.041,
+      "min_fps": 22.3,
+      "max_fps": 26.7,
+      "cpu_utilization": "65%",
+      "memory_usage": "1.2GB"
+    },
+    "session_info": {
+      "start_time": "2024-01-10T14:23:15.000Z",
+      "end_time": "2024-01-10T14:23:15.200Z",
+      "video_source": "mumbai_traffic.mp4"
+    },
+    "sub_object_retrieval": {
+      "enabled": true,
+      "save_path": "output/",
+      "naming_convention": "{main_object}_{main_id}_{sub_object}_{sub_id}.jpg",
+      "extraction_method": "crop_from_main_object"
+    }
+  }
+}
+
